@@ -55,6 +55,7 @@ public class Level {
 	protected void generateLevel() {
 	}
 
+	@SuppressWarnings("unused")
 	protected void loadLevel(String path) {
 		URL location = Level.class.getProtectionDomain().getCodeSource().getLocation();
 		File file = new File(location.getFile() + path);
@@ -106,9 +107,6 @@ public class Level {
 		}
 	}
 
-	private void time() {
-	}
-
 	public void renderBackground(int x, int y, Screen screen) {
 
 		background.render(x, y, screen);
@@ -135,7 +133,7 @@ public class Level {
 	public void add(Entity e) {
 		entities.add(e);
 	}
-	
+
 	public void remove(Entity e) {
 		entities.remove(e);
 	}

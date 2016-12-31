@@ -1,5 +1,8 @@
 package entity.mob;
 
+import java.awt.Rectangle;
+import java.util.ArrayList;
+
 import entity.Entity;
 import entity.HealthBox;
 import entity.HitBox;
@@ -8,9 +11,6 @@ import graphics.PlayerSprite;
 import graphics.Screen;
 import graphics.Sprite;
 import input.Keyboard;
-
-import java.awt.Rectangle;
-import java.util.ArrayList;
 
 public class Player extends Mob {
 
@@ -21,9 +21,8 @@ public class Player extends Mob {
 	private int invanim = 0, anim = 0, curFrame = 0, control = 1;
 	public int health = 500;
 	private boolean isFlipped = false;
-	private boolean walking = false, spaceFree = true, punching = false, kicking = false, invincible = false, dodging = false;
+	private boolean spaceFree = true, punching = false, kicking = false, invincible = false, dodging = false;
 
-	private int fireRate = 0;
 	Projectile p;
 
 	/**
@@ -38,7 +37,6 @@ public class Player extends Mob {
 		attackBox.init(level);
 		hitBox.init(level);
 		bounds = new Rectangle(0, 0, sprite.SIZE_X, sprite.SIZE_Y);
-		fireRate = 0;//FireballProjectile.FIRE_RATE;
 	}
 
 	/**
@@ -57,7 +55,6 @@ public class Player extends Mob {
 		hitBox.init(level);
 		attackBox.init(level);
 		bounds = new Rectangle(x - sprite.SIZE_X / 2, y - sprite.SIZE_Y / 2, sprite.SIZE_X, sprite.SIZE_Y);
-		fireRate = 0;//FireballProjectile.FIRE_RATE;
 	}
 
 	public Player(int x, int y, Keyboard input, boolean flip) {
@@ -72,7 +69,6 @@ public class Player extends Mob {
 		hitBox.init(level);
 		attackBox.init(level);
 		bounds = new Rectangle(x - sprite.SIZE_X / 2, y - sprite.SIZE_Y / 2, sprite.SIZE_X, sprite.SIZE_Y);
-		fireRate = 0;//FireballProjectile.FIRE_RATE;
 	}
 
 	/**
@@ -95,11 +91,11 @@ public class Player extends Mob {
 				invanim = 0;
 		}
 		// Update the change in position when a movement key is pressed
-		int dx = 0, dy = 0;
+		int dx = 0;
 		if (control == 1) {
-			if (input.w)
-				dy--;
-			else if (input.s) dy++;
+			if (input.w) {
+			} else if (input.s) {
+			}
 			if (input.a) dx--;
 			if (input.d) dx++;
 
@@ -137,9 +133,9 @@ public class Player extends Mob {
 				sprites = PlayerSprite.playerReady;
 			}
 		} else if (control == 2) {
-			if (input.up)
-				dy--;
-			else if (input.down) dy++;
+			if (input.up) {
+			} else if (input.down) {
+			}
 			if (input.left) dx--;
 			if (input.right) dx++;
 
@@ -210,9 +206,7 @@ public class Player extends Mob {
 		// Move the player if its position will change, set walking flag accordingly
 		if (spaceFree && dx != 0) {
 			move(dx, 0, width, height);
-			walking = true;
 		} else {
-			walking = false;
 		}
 
 		if (spaceFree && anim % 20 == 10) {

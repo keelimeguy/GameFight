@@ -1,7 +1,5 @@
 package graphics;
 
-import game.Game;
-
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -10,7 +8,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import level.Level;
+import game.Game;
 
 public class Sprite {
 
